@@ -41,7 +41,7 @@ export const Sider = () => {
     },
   ];
   const pathName = usePathname();
-
+  console.log(pathName);
   return (
     <>
       <div className="bg-[#212121] h-[100vh] fixed w-[280px]">
@@ -57,7 +57,7 @@ export const Sider = () => {
                 <Link
                   href={item.link}
                   className={
-                    "flex items-center text-white hover:text-[#00adef]" +
+                    "flex items-center hover:text-[#00adef] " +
                     (pathName === item.link ? "text-[#00adef]" : "text-white")
                   }
                 >

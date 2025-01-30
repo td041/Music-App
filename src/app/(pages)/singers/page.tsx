@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function SingerPage() {
   return (
     <>
-      <h1 className="text-[38px] font-[700]">Trang kết quả tìm kiếm</h1>
+      <h1 className="text-[38px] font-[700]">Danh sách ca sĩ</h1>
     </>
   );
 }

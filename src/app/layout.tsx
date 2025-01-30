@@ -24,7 +24,7 @@ export default function RootLayout({
             </div>
             <div className="flex-1 ml-[20px]">
               <Search />
-              <main className="mt-[30px] mb-[120px]">{children}</main>
+              <main className="mt-[30px] mb-[150px]">{children}</main>
             </div>
           </div>
         </div>
