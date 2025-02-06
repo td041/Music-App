@@ -50,7 +50,7 @@ export default function CategoryDetailPage() {
             bản mobile. Dữ liệu sẽ được lấy trong 30 ngày gần nhất và được cập nhật liên tục."
       />
       <div className="mt-[30px]">
-        <Title text="Danh Sách Bài Hát" />
+        <Title text="Danh Mục Bài Hát" />
         <div className="grid grid-cols-1 gap-[10px]">
           {data.map((item, index) => (
             <SongItem2 item={item} key={index} />

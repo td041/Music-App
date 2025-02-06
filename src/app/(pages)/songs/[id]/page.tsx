@@ -39,11 +39,13 @@ export default function SongDetailPage() {
         <Title text="Lời Bài Hát" />
         <div className="bg-[#212121] text-white rounded-[15px] p-[20px] whitespace-pre-line">{lyrics}</div>
       </div>
-      <Title text="Danh Sách Bài Hát" />
-      <div className="grid grid-cols-1 gap-[10px]">
-        {data.map((item, index) => (
-          <SongItem2 item={item} key={index} />
-        ))}
+      <div className="mt-[30px]">
+        <Title text="Bài Hát Cùng Danh Mục" />
+        <div className="grid grid-cols-1 gap-[10px]">
+          {data.map((item, index) => (
+            <SongItem2 item={item} key={index} />
+          ))}
+        </div>
       </div>
     </>
   );

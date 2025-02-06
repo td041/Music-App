@@ -2,32 +2,37 @@ import type { Metadata } from "next";
 import { SongItem } from "./components/songs/SongItem";
 import { Title } from "./components/title/Title";
 import { CardItem } from "./components/card/CardItem";
+import { dbFirebase } from "./firebaseConfig";
+import { onValue, ref } from "firebase/database";
 
 export const metadata: Metadata = {
   title: "Trang chủ",
   description: "Online Music App",
 };
 export default function Home() {
-  const dataSection1 = [
-    {
-      image: "/demo/image-3.png",
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Vân",
-      listen: "20000",
-    },
-    {
-      image: "/demo/image-3.png",
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Vân",
-      listen: "20000",
-    },
-    {
-      image: "/demo/image-3.png",
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Vân",
-      listen: "20000",
-    },
-  ];
+  const songRef = ref(dbFirebase, "songs");
+  const dataSection1: any[] = [];
+  onValue(songRef, (items) => {
+    items.forEach((item) => {
+      const key = item.key;
+      const data = item.val();
+      if(dataSection1.length > 3){
+        const singersRef = ref(dbFirebase, '/singers/' + data.singerId[0]);
+        onValue(singersRef, (itemSinger) => {
+          const dataSinger = itemSinger.val();
+          dataSection1.push({
+            id: key,
+            image: data.image,
+            title: data.title,
+            singer: dataSinger.title,
+            listen: data.listen,
+          });
+        })
+      }
+    
+    });
+  });
+  // DataSection1
   const dataSection2 = [
     {
       image: "/demo/image-4.png",
