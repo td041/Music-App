@@ -11,13 +11,14 @@ export const metadata: Metadata = {
 };
 export default function Home() {
   const songRef = ref(dbFirebase, "songs");
+  // Section 1
   const dataSection1: any[] = [];
   onValue(songRef, (items) => {
     items.forEach((item) => {
       const key = item.key;
       const data = item.val();
-      if(dataSection1.length > 3){
-        const singersRef = ref(dbFirebase, '/singers/' + data.singerId[0]);
+      if (dataSection1.length < 3) {
+        const singersRef = ref(dbFirebase, "/singers/" + data.singerId[0]);
         onValue(singersRef, (itemSinger) => {
           const dataSinger = itemSinger.val();
           dataSection1.push({
@@ -26,77 +27,51 @@ export default function Home() {
             title: data.title,
             singer: dataSinger.title,
             listen: data.listen,
+            link: `/songs/${key}`,
           });
-        })
+        });
       }
-    
     });
   });
-  // DataSection1
-  const dataSection2 = [
-    {
-      image: "/demo/image-4.png",
-      title: "Nhạc Trẻ",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-4.png",
-      title: "Nhạc Trẻ",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-4.png",
-      title: "Nhạc Trẻ",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-4.png",
-      title: "Nhạc Trẻ",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-4.png",
-      title: "Nhạc Trẻ",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-  ];
-  const dataSection3 = [
-    {
-      image: "/demo/image-5.png",
-      title: "Sơn Tùng M-TP",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-5.png",
-      title: "Sơn Tùng M-TP",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-5.png",
-      title: "Sơn Tùng M-TP",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-5.png",
-      title: "Sơn Tùng M-TP",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-    {
-      image: "/demo/image-5.png",
-      title: "Sơn Tùng M-TP",
-      description: "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-      link: "#",
-    },
-  ];
+  // End Section 1
+  // Section 2
+  const dataSection2: any[] = [];
+  const categoryRef = ref(dbFirebase, "categories");
+  onValue(categoryRef, (items) => {
+    items.forEach((item) => {
+      const key = item.key;
+      const data = item.val();
+      if (dataSection2.length < 5) {
+        dataSection2.push({
+          id: key,
+          image: data.image,
+          title: data.title,
+          description: data.description,
+          link: `/categories/${key}`,
+        });
+      }
+    });
+  });
+  // End Section 2
+  // Section 3
+  const dataSection3: any[] = [];
+  const singerRef = ref(dbFirebase, "singers");
+  onValue(singerRef, (items) => {
+    items.forEach((item) => {
+      const key = item.key;
+      const data = item.val();
+      if (dataSection3.length < 5) {
+        dataSection3.push({
+          id: key,
+          image: data.image,
+          title: data.title,
+          description: data.description,
+          link: `/singers/${key}`,
+        });
+      }
+    });
+  });
+  // End Section 3
   return (
     <>
       {/* Section 1 : Nghe nhiều */}
@@ -107,14 +82,20 @@ export default function Home() {
             style={{ backgroundImage: "url('/demo/background-1.png')" }}
           >
             <div className="flex-1 mr-[34px] ml-[30px]">
-              <div className="font-[700] text-[32px] text-white mb-[6px]">Nhạc EDM</div>
+              <div className="font-[700] text-[32px] text-white mb-[6px]">
+                Nhạc EDM
+              </div>
               <div className="font-[500] text-[14px] text-white">
-                Top 100 Nhạc Electronic/Dance Âu Mỹ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Top 100 nhạc
-                Electronic/Dance Âu Mỹ
+                Top 100 Nhạc Electronic/Dance Âu Mỹ là danh sách 100 ca khúc hot
+                nhất hiện tại của thể loại Top 100 nhạc Electronic/Dance Âu Mỹ
               </div>
             </div>
             <div className="w-[215px] mr-[22px] mt-[48px]">
-              <img src="/demo/image-2.png" alt="Nhạc EDM" className="w-full h-auto" />
+              <img
+                src="/demo/image-2.png"
+                alt="Nhạc EDM"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>

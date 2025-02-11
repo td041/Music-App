@@ -1,6 +1,8 @@
 import CartInfo from "@/app/components/card/CardInfo";
 import { SongItem2 } from "@/app/components/songs/SongItem2";
 import { Title } from "@/app/components/title/Title";
+import { dbFirebase } from "@/app/firebaseConfig";
+import { onValue, ref } from "firebase/database";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,7 +30,7 @@ export default async function SongDetailPage(props: any) {
     items.forEach((item) => {
       const key = item.key;
       const data = item.val();
-      if (data.categoryId === dataFinal.categoryId) {
+      if (data.categoryId === dataFinal.categoryId && key !== id) {
         onValue(
           ref(dbFirebase, "/singers/" + data.singerId[0]),
           (itemSinger) => {
@@ -46,41 +48,48 @@ export default async function SongDetailPage(props: any) {
       }
     });
   });
+  // End Data Section 3
   const lyrics = ` Verse: 
     Níu ngàn lời cũng không ngăn được   
     //...
     Dạy nhau tốt hơn xong dành lại cho người sau…`;
-  const data = [
-    {
-      image: "/demo/image-3.png",
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Vân",
-      listen: "20000",
-    },
-    {
-      image: "/demo/image-3.png",
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Vân",
-      listen: "20000",
-    },
-    {
-      image: "/demo/image-3.png",
-      title: "Cô Phòng",
-      singer: "Hồ Quang Hiếu, Huỳnh Vân",
-      listen: "20000",
-    },
-  ];
+  // const data = [
+  //   {
+  //     image: "/demo/image-3.png",
+  //     title: "Cô Phòng",
+  //     singer: "Hồ Quang Hiếu, Huỳnh Vân",
+  //     listen: "20000",
+  //   },
+  //   {
+  //     image: "/demo/image-3.png",
+  //     title: "Cô Phòng",
+  //     singer: "Hồ Quang Hiếu, Huỳnh Vân",
+  //     listen: "20000",
+  //   },
+  //   {
+  //     image: "/demo/image-3.png",
+  //     title: "Cô Phòng",
+  //     singer: "Hồ Quang Hiếu, Huỳnh Vân",
+  //     listen: "20000",
+  //   },
+  // ];
   return (
     <>
-      <CartInfo image="/demo/image-4.png" title="Nhạc Trẻ" description="Hồ Quang Hiếu, Huỳnh Vân" />
+      <CartInfo
+        image={dataFinal.image}
+        title={dataFinal.title}
+        description={dataFinal.description}
+      />
       <div className="mt-[30px]">
         <Title text="Lời Bài Hát" />
-        <div className="bg-[#212121] text-white rounded-[15px] p-[20px] whitespace-pre-line">{lyrics}</div>
+        <div className="bg-[#212121] text-white rounded-[15px] p-[20px] whitespace-pre-line">
+          {lyrics}
+        </div>
       </div>
       <div className="mt-[30px]">
         <Title text="Bài Hát Cùng Danh Mục" />
         <div className="grid grid-cols-1 gap-[10px]">
-          {data.map((item, index) => (
+          {dataSection3.map((item, index) => (
             <SongItem2 item={item} key={index} />
           ))}
         </div>

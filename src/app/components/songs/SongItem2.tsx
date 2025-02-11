@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaPlay, FaRegHeart } from "react-icons/fa6";
 
 export const SongItem2 = (props: { item: any }) => {
@@ -11,9 +12,15 @@ export const SongItem2 = (props: { item: any }) => {
             <FaPlay />
           </button>
           <div className="w-[42px] aspect-square rounded-[8px] truncate mx-[12px]">
-            <img alt={item.title} className="h-full w-full object-cover" src={item.image}/>
+            <img
+              alt={item.title}
+              className="h-full w-full object-cover"
+              src={item.image}
+            />
           </div>
-          <div className="font-700] text-[14px] text-white">{item.title}</div>
+          <div className="font-700] text-[14px] text-white">
+            <Link href={item.link}>{item.title}</Link>
+          </div>
         </div>
         {/* Center */}
         <div className="w-[30%] text-center">
@@ -21,7 +28,9 @@ export const SongItem2 = (props: { item: any }) => {
         </div>
         {/* Right */}
         <div className="flex items-center justify-end w-[30%]">
-          <div className="font-[400] text-[14px] text-white mr-[18px]">4:32</div>
+          <div className="font-[400] text-[14px] text-white mr-[18px]">
+            {item.time}
+          </div>
           <button className="text-[20px] text-white" title="button">
             <FaRegHeart />
           </button>

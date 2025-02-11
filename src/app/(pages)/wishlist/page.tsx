@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Online Music App",
 };
 export default function WishListPage() {
-   const data = [
+  const data = [
     {
       image: "/demo/image-3.png",
       title: "Cô Phòng",
