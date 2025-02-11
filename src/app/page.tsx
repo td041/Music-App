@@ -28,6 +28,7 @@ export default function Home() {
             singer: dataSinger.title,
             listen: data.listen,
             link: `/songs/${key}`,
+            audio: data.audio,
           });
         });
       }
