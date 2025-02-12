@@ -35,6 +35,26 @@ export const ButtonPlay = (props: any) => {
       const elementButtonPlay =
         elementPlayAudio.querySelector(".inner-button-play");
       elementButtonPlay.classList.add("play");
+      // Lấy ra tổng thời gian
+      const elementCurrentTime = elementPlayAudio.querySelector(
+        ".inner-play-time .inner-current-time"
+      );
+      const elementTotalTime = elementPlayAudio.querySelector(
+        ".inner-play-time .inner-total-time"
+      );
+      elementAudio.onloadedmetadata = () => {
+        const totalTime = elementAudio.duration;
+        // duration có sẵn
+        elementTotalTime.max = totalTime;
+        // Lấy ra thời gian hiện tại
+        elementAudio.ontimeupdate = () => {
+          const currentTime = elementAudio.currentTime;
+          // currentTime có sẵn
+          const percent = (currentTime * 100) / totalTime;
+          elementCurrentTime.style.width = `${percent}%`;
+          elementTotalTime.value = currentTime;
+        };
+      };
     }
   };
   return (
