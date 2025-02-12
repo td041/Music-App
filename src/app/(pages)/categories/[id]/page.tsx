@@ -36,6 +36,7 @@ export default async function CategoryDetailPage(props: any) {
               singer: dataSinger.title,
               link: `/songs/${key}`,
               time: "4:32",
+              audio: data.audio,
             });
           }
         );

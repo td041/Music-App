@@ -34,6 +34,7 @@ export default async function SingerDetailPage(props: any) {
           singer: dataFinal.title,
           link: `/songs/${key}`,
           time: "4:32",
+          audio: data.audio,
         });
       }
     });

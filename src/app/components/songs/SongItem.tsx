@@ -38,7 +38,10 @@ export const SongItem = (props: { item: Item }) => {
           </div>
         </div>
         <div className="">
-          <ButtonPlay item={item}/>
+          <ButtonPlay
+            item={item}
+            className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px]"
+          />
           <button
             className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px]"
             title="button"

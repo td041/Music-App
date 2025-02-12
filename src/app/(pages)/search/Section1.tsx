@@ -27,6 +27,7 @@ export const Section1 = (data: any) => {
             link: `/songs/${key}`,
             time: "4:32",
             singerId: data.singerId,
+            audio: data.audio,
           });
         }
       });
