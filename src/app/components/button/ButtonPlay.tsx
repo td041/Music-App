@@ -41,7 +41,7 @@ export const ButtonPlay = (props: any) => {
       );
       const elementTotalTime = elementPlayAudio.querySelector(
         ".inner-play-time .inner-total-time"
-      );
+      ); 
       elementAudio.onloadedmetadata = () => {
         const totalTime = elementAudio.duration;
         // duration có sẵn

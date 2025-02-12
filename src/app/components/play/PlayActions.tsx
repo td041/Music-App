@@ -11,7 +11,7 @@ export const PlayActions = () => {
     const elementPlayAudio: any = document.querySelector(".play-audio");
     const elementButtonPlay =
       elementPlayAudio.querySelector(".inner-button-play");
-    // elementButtonPlay.classList.toggle("play");2
+    // elementButtonPlay.classList.toggle("play");
     const elementAudio = elementPlayAudio.querySelector(".inner-audio");
     if (elementButtonPlay.classList.contains("play")) {
       elementButtonPlay.classList.remove("play");
