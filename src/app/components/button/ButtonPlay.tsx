@@ -31,6 +31,10 @@ export const ButtonPlay = (props: any) => {
       // Hiển thị tên ca sĩ
       const elementSinger = elementPlayAudio.querySelector(".inner-singer");
       elementSinger.innerHTML = item.singer;
+      // Hiển thị nút pause
+      const elementButtonPlay =
+        elementPlayAudio.querySelector(".inner-button-play");
+      elementButtonPlay.classList.add("play");
     }
   };
   return (
