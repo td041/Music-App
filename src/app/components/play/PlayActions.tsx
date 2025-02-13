@@ -21,10 +21,35 @@ export const PlayActions = () => {
       elementAudio.play();
     }
   };
+
+  const handlePrevious = () => {
+    const currentSong = document.querySelector(`[song-id].active`);
+    if (currentSong) {
+      const previousSong = currentSong.previousElementSibling;
+      if (previousSong) {
+        const buttonPlay: any = previousSong.querySelector(".button-active");
+        buttonPlay.click();
+      }
+    }
+  };
+  const handleNext = () => {
+    const currentSong = document.querySelector(`[song-id].active`);
+    if (currentSong) {
+      const nextSong = currentSong.nextElementSibling;
+      if (nextSong) {
+        const buttonPlay: any = nextSong.querySelector(".button-active");
+        buttonPlay.click();
+      }
+    }
+  };
   return (
     <>
       <div className="flex items-center justify-center">
-        <button className="text-white text-[16px]" title="button">
+        <button
+          className="text-white text-[16px]"
+          title="button"
+          onClick={handlePrevious}
+        >
           <FaBackwardStep />
         </button>
         <button
@@ -35,7 +60,11 @@ export const PlayActions = () => {
           <FaPlay className="inner-icon-play" />
           <FaPause className="inner-icon-pause" />
         </button>
-        <button className="text-white text-[16px]" title="button">
+        <button
+          className="text-white text-[16px]"
+          title="button"
+          onClick={handleNext}
+        >
           <FaForwardStep />
         </button>
       </div>

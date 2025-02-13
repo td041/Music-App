@@ -41,7 +41,8 @@ export const ButtonPlay = (props: any) => {
       );
       const elementTotalTime = elementPlayAudio.querySelector(
         ".inner-play-time .inner-total-time"
-      ); 
+      );
+      // lấy ra thời gian hiện tại
       elementAudio.onloadedmetadata = () => {
         const totalTime = elementAudio.duration;
         // duration có sẵn
@@ -55,15 +56,19 @@ export const ButtonPlay = (props: any) => {
           elementTotalTime.value = currentTime;
         };
       };
+      // Xóa class Active cho bài hát trước đó đang hát
+      const elementSongOld = document.querySelector(`[song-id].active`);
+      if (elementSongOld) {
+        elementSongOld.classList.remove("active");
+      }
+      // Thêm class Active cho bài hát
+      const elementSong = document.querySelector(`[song-id="${item.id}"]`);
+      elementSong?.classList.add("active");
     }
   };
   return (
     <>
-      <button
-        className={className}
-        title="button"
-        onClick={handlePlay}
-      >
+      <button className={className} title="button" onClick={handlePlay}>
         <FaPlay />
       </button>
     </>
