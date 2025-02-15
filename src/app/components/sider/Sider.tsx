@@ -1,8 +1,30 @@
 "use client";
+import { authFirebase } from "@/app/firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaHeart, FaHouse, FaMusic, FaPodcast, FaRightFromBracket, FaUser, FaUserPlus } from "react-icons/fa6";
+import { use, useEffect, useState } from "react";
+import {
+  FaHeart,
+  FaHouse,
+  FaMusic,
+  FaPodcast,
+  FaRightFromBracket,
+  FaUser,
+  FaUserPlus,
+} from "react-icons/fa6";
+import { MenuItem } from "./MenuItem";
 export const Sider = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    onAuthStateChanged(authFirebase, (user) => {
+      if (user) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    });
+  });
   const menu = [
     {
       title: "Trang chủ",
@@ -23,6 +45,7 @@ export const Sider = () => {
       title: "Bài hát yêu thích",
       icon: <FaHeart />,
       link: "/wishlist",
+      isLogin: true,
     },
     {
       title: "Đăng xuất",
@@ -33,15 +56,16 @@ export const Sider = () => {
       title: "Đăng nhập",
       icon: <FaUser />,
       link: "/login",
+      isLogin: false,
     },
     {
       title: "Đăng kí",
       icon: <FaUserPlus />,
       link: "/register",
+      isLogin: false,
     },
   ];
-  const pathName = usePathname();
-  console.log(pathName);
+
   return (
     <>
       <div className="bg-[#212121] h-[100vh] fixed w-[280px]">
@@ -53,20 +77,9 @@ export const Sider = () => {
         <nav className="py-[20px] px-[20px]">
           <ul className="">
             {menu.map((item, index) => (
-              <li className="mb-[30px]" key={index}>
-                <Link
-                  href={item.link}
-                  className={
-                    "flex items-center hover:text-[#00adef] " +
-                    (pathName === item.link ? "text-[#00adef]" : "text-white")
-                  }
-                >
-                  {/* Cách highlight vào link đang nhấp vào  */}
-                  <span className="text-[20px] mr-[20px]">{item.icon}</span>
-                  <span className="text-[16px] font-[700]">{item.title}</span>
-                </Link>
-              </li>
+              <MenuItem item={item} isLogin={isLogin} index={index} />
             ))}
+            ;
           </ul>
         </nav>
       </div>
