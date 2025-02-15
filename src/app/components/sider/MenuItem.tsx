@@ -2,13 +2,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export const MenuItem = (props: any) => {
-  const { item, isLogin, index } = props;
+  const { item, isLogin } = props;
   const pathName = usePathname();
   console.log(pathName);
   return (
     <>
       {(item.isLogin === undefined || item.isLogin === isLogin) && (
-        <li className="mb-[30px]" key={index}>
+        <li className="mb-[30px]">
           <Link
             href={item.link}
             className={

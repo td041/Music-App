@@ -51,6 +51,7 @@ export const Sider = () => {
       title: "Đăng xuất",
       icon: <FaRightFromBracket />,
       link: "/logout",
+      isLogin: true,
     },
     {
       title: "Đăng nhập",
@@ -77,7 +78,7 @@ export const Sider = () => {
         <nav className="py-[20px] px-[20px]">
           <ul className="">
             {menu.map((item, index) => (
-              <MenuItem item={item} isLogin={isLogin} index={index} />
+              <MenuItem item={item} isLogin={isLogin} key={index}/>
             ))}
             ;
           </ul>
