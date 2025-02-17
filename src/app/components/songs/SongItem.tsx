@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FaHeart } from "react-icons/fa6";
 import { ButtonPlay } from "../button/ButtonPlay";
+import { ButtonHeart } from "../button/ButtonHeart";
 
 interface Item {
   id: string;
@@ -45,14 +45,11 @@ export const SongItem = (props: { item: Item }) => {
           <ButtonPlay
             item={item}
             className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px] button-active"
-
           />
-          <button
-            className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] text-white ml-[10px]"
-            title="button"
-          >
-            <FaHeart />
-          </button>
+          <ButtonHeart
+            item={item}
+            className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] ml-[10px] text-white "
+          />
         </div>
       </div>
     </>

@@ -29,6 +29,7 @@ export default function Home() {
             listen: data.listen,
             link: `/songs/${key}`,
             audio: data.audio,
+            wishlist: data.wishlist,
           });
         });
       }
