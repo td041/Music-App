@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FaPlay, FaRegHeart } from "react-icons/fa6";
 import { ButtonPlay } from "../button/ButtonPlay";
 import { ButtonHeart } from "../button/ButtonHeart";
 
