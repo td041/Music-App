@@ -35,9 +35,10 @@ export const SongItem2 = (props: { item: any }) => {
           <div className="font-[400] text-[14px] text-white mr-[18px]">
             {item.time}
           </div>
-          <ButtonHeart item={item} className="text-[20px] " title="button">
-            <FaRegHeart />
-          </ButtonHeart>
+          <ButtonHeart
+            item={item}
+            className="w-[34px] h-[34px] rounded-full border border-white inline-flex items-center justify-center text-[15px] ml-[10px] text-white "
+          />
         </div>
       </div>
     </>

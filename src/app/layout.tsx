@@ -3,6 +3,7 @@ import "./globals.css";
 import { Sider } from "./components/sider/Sider";
 import { Search } from "./components/search/Search";
 import { Play } from "./components/play/Play";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Spotify",
@@ -16,14 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body className="bg-[#292929]"> 
+      <body className="bg-[#292929]">
         <div className="container mx-auto">
           <div className="flex items-start">
             <div className="w-[280px]">
               <Sider />
             </div>
             <div className="flex-1 ml-[20px]">
-              <Search />
+              <Suspense>
+                <Search />
+              </Suspense>
               <main className="mt-[30px] mb-[150px]">{children}</main>
             </div>
           </div>
