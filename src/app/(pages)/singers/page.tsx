@@ -8,43 +8,6 @@ export const metadata: Metadata = {
   title: "Danh sách ca sĩ",
   description: "Online Music App",
 };
-const data = [
-  {
-    image: "/demo/image-5.png",
-    title: "Sơn Tùng M-TP",
-    description:
-      "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-    link: "#",
-  },
-  {
-    image: "/demo/image-5.png",
-    title: "Sơn Tùng M-TP",
-    description:
-      "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-    link: "#",
-  },
-  {
-    image: "/demo/image-5.png",
-    title: "Sơn Tùng M-TP",
-    description:
-      "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-    link: "#",
-  },
-  {
-    image: "/demo/image-5.png",
-    title: "Sơn Tùng M-TP",
-    description:
-      "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-    link: "#",
-  },
-  {
-    image: "/demo/image-5.png",
-    title: "Sơn Tùng M-TP",
-    description:
-      "Top 100 Nhạc Trẻ là danh sách 100 ca khúc hot nhất hiện tại của thể loại Nhạc Trẻ",
-    link: "#",
-  },
-];
 export default function SingerPage() {
   const dataSection1: any[] = [];
   const singerRef = ref(dbFirebase, "singers");

@@ -1,10 +1,6 @@
 "use client";
-import { authFirebase, dbFirebase } from "@/app/firebaseConfig";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { ref, set } from "firebase/database";
+import { authFirebase } from "@/app/firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 export const FormLogin = () => {
