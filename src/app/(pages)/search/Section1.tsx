@@ -5,7 +5,7 @@ import { ref, get } from "firebase/database";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export const Section1 = (data: any) => {
+export const Section1 = () => {
   const searchParams = useSearchParams();
   const defaultKeyword = searchParams.get("keyword") || "";
   const [dataFinal, setDataFinal] = useState<any[]>([]);
